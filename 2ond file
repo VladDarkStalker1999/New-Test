@@ -1,0 +1,41 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+typedef struct{
+	char name[256];
+	char money[256];
+	int summa;
+	int profit;
+}vklad;
+
+
+void main()
+{
+	setlocale(LC_ALL, "rus");
+	FILE* f;
+	int i=0,n=0;
+	vklad* arr=NULL;
+	f=fopen("text.txt", "rt");
+
+	fread(&n,sizeof(n),1,f);
+
+
+
+
+
+	for (i=0;i<n;i++)
+	{
+		arr=(vklad*)malloc(n*sizeof(vklad));
+
+		fread(&(arr[i]),sizeof(vklad),1,f);
+		printf("Название: %s\t Валюта: %s\t  Сумма вклада: %d\t Процентная ставка: %d%%\n\n",arr[i].name,arr[i].money,arr[i].summa, arr[i].profit);
+		
+	}	
+
+
+	fclose(f);
+	system("PAUSE");
+}
+
